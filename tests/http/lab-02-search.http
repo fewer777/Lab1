@@ -1,0 +1,50 @@
+@baseUrl = http://localhost:5080
+
+### 1. Успішне створення інциденту (Очікуємо 201 Created)
+POST {{baseUrl}}/api/incidents
+Content-Type: application/json
+
+{
+  "title": "Test Incident T-01",
+  "description": "Training description of a successfully created incident",
+  "severity": "Low",
+  "occurredAtUtc": "2026-01-01T12:00:00Z"
+}
+
+### 2. Некоректний Severity (Очікуємо 400 Bad Request)
+POST {{baseUrl}}/api/incidents
+Content-Type: application/json
+
+{
+  "title": "Test invalid severity",
+  "description": "Checking server validation",
+  "severity": "7",
+  "occurredAtUtc": "2026-01-01T12:00:00Z"
+}
+
+### 3. Відсутній час (Очікуємо 400 Bad Request)
+POST {{baseUrl}}/api/incidents
+Content-Type: application/json
+
+{
+  "title": "Test missing date",
+  "description": "Checking missing occurredAtUtc",
+  "severity": "Medium"
+}
+
+### 4. Дата з майбутнього (Очікуємо 400 Bad Request)
+POST {{baseUrl}}/api/incidents
+Content-Type: application/json
+
+{
+  "title": "Test future date",
+  "description": "Checking future date",
+  "severity": "Medium",
+  "occurredAtUtc": "2099-01-01T12:00:00Z"
+}
+
+### 5. Пошук з апострофом (Очікуємо 200 OK замість 500)
+GET {{baseUrl}}/api/incidents/search?q=O%27Brien
+
+### 6. Пошук з невідомим sortBy (Очікуємо 400 Bad Request)
+GET {{baseUrl}}/api/incidents/search?sortBy=unknown

@@ -29,6 +29,7 @@ public static class DatabaseBootstrap
             await dbContext.Database.ExecuteSqlRawAsync(
                 "TRUNCATE TABLE incident_comments, incident_status_history, incidents, study_users RESTART IDENTITY CASCADE;");
             await DbSeeder.SeedAsync(dbContext);
+        await SecureLab.Api.Scaffolding.Lab02Seed.EnsureAsync(services);
             Console.WriteLine("Локальні навчальні дані очищено та повторно заповнено seed-значеннями.");
             return;
         }
@@ -40,5 +41,6 @@ public static class DatabaseBootstrap
 
         await dbContext.Database.MigrateAsync();
         await DbSeeder.SeedAsync(dbContext);
+        await SecureLab.Api.Scaffolding.Lab02Seed.EnsureAsync(services);
     }
 }
