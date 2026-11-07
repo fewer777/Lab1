@@ -1,0 +1,140 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #172033;
+  background: #eef2f7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.page-header,
+main {
+  width: min(1080px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+  padding: 2.5rem 0 1.5rem;
+}
+
+.page-header h1,
+.panel h2 {
+  margin: 0;
+}
+
+.page-header p {
+  margin: 0.35rem 0 0;
+}
+
+.page-header a,
+button {
+  border: 0;
+  border-radius: 0.55rem;
+  background: #1557b0;
+  color: white;
+  padding: 0.7rem 1rem;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.eyebrow {
+  color: #4f647f;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: 1rem;
+  padding-bottom: 3rem;
+}
+
+.panel {
+  min-width: 0;
+  border: 1px solid #dce3ed;
+  border-radius: 0.8rem;
+  background: white;
+  padding: 1.25rem;
+  box-shadow: 0 8px 24px rgb(37 52 78 / 8%);
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: end;
+}
+
+.toolbar p {
+  margin: 0.35rem 0 0;
+  color: #52627a;
+}
+
+form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+select {
+  padding: 0.6rem;
+  border: 1px solid #aebbd0;
+  border-radius: 0.45rem;
+  background: white;
+  font: inherit;
+}
+
+.incident-list {
+  display: grid;
+  gap: 0.7rem;
+  list-style: none;
+  padding: 0;
+}
+
+.incident-card {
+  width: 100%;
+  display: grid;
+  gap: 0.35rem;
+  text-align: left;
+  color: #172033;
+  background: #f5f8fc;
+  border: 1px solid #d8e0ec;
+}
+
+.incident-card:hover,
+.incident-card:focus-visible {
+  border-color: #1557b0;
+  background: #edf4ff;
+}
+
+.metadata,
+.details-placeholder {
+  color: #5c6b80;
+}
+
+@media (max-width: 760px) {
+  .page-header,
+  .toolbar,
+  form {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+  }
+}

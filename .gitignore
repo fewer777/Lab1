@@ -1,0 +1,27 @@
+# .NET
+**/bin/
+**/obj/
+TestResults/
+*.user
+*.suo
+
+# IDE and operating system
+.idea/
+.vs/
+.vscode/
+.DS_Store
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+appsettings.Local.json
+*.pfx
+*.pem
+*.key
+
+# Local database artifacts and logs
+*.dump
+*.sql.gz
+*.log
+

@@ -1,0 +1,30 @@
+@host = http://localhost:5080
+@aliceIncidentId = 20000000-0000-0000-0000-000000000001
+
+### Health/readiness
+GET {{host}}/health
+Accept: application/json
+
+### Working list flow
+GET {{host}}/api/incidents
+Accept: application/json
+
+### Filtered list
+GET {{host}}/api/incidents?status=Triaged
+Accept: application/json
+
+### Existing details
+GET {{host}}/api/incidents/{{aliceIncidentId}}
+Accept: application/json
+
+### Missing resource: expected 404 Problem Details
+GET {{host}}/api/incidents/99999999-9999-9999-9999-999999999999
+Accept: application/json
+
+### Invalid filter: expected 400 Validation Problem Details
+GET {{host}}/api/incidents?status=Unknown
+Accept: application/json
+
+### Lab 1 extension point: expected 501 before student implementation
+GET {{host}}/api/incidents/severity-summary
+Accept: application/json

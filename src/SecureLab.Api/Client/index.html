@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Навчальний трекер інцидентів</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+    <header class="page-header">
+        <div>
+            <p class="eyebrow">SecureLab · варіант 2-A</p>
+            <h1>Трекер інцидентів</h1>
+            <p>Мінімальний клієнт для дослідження шляху Browser → API → PostgreSQL.</p>
+        </div>
+        <a href="/scalar/v1" target="_blank" rel="noreferrer">OpenAPI</a>
+    </header>
+
+    <main>
+        <section class="panel" aria-labelledby="list-title">
+            <div class="toolbar">
+                <div>
+                    <h2 id="list-title">Інциденти</h2>
+                    <p id="list-status" role="status">Завантаження…</p>
+                </div>
+                <form id="filter-form">
+                    <label for="status-filter">Статус</label>
+                    <select id="status-filter" name="status">
+                        <option value="">Усі</option>
+                        <option value="New">New</option>
+                        <option value="Triaged">Triaged</option>
+                        <option value="InProgress">InProgress</option>
+                        <option value="Resolved">Resolved</option>
+                        <option value="Closed">Closed</option>
+                    </select>
+                    <button type="submit">Застосувати</button>
+                </form>
+            </div>
+            <ul id="incident-list" class="incident-list"></ul>
+        </section>
+
+        <section class="panel" aria-labelledby="details-title">
+            <h2 id="details-title">Деталі</h2>
+            <div id="incident-details" class="details-placeholder">
+                Виберіть інцидент зі списку.
+            </div>
+        </section>
+
+        <!-- ДОДАНО ЗГІДНО ЗІ ЗВІТОМ (Рис. 35): -->
+        <section class="panel" aria-labelledby="severity-summary-title">
+            <div class="toolbar">
+                <div>
+                    <h2 id="severity-summary-title">Підсумок за severity</h2>
+                    <p id="severity-summary-status" role="status">Натисніть кнопку для завантаження.</p>
+                </div>
+                <button id="severity-summary-button" type="button">
+                    Показати підсумок
+                </button>
+            </div>
+            <ul id="severity-summary-list"></ul>
+        </section>
+    </main>
+</body>
+</html>
